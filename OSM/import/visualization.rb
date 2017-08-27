@@ -1,7 +1,7 @@
 module OsmImport
 
 	module_function
-    def solidLine(way, width=0, material=nil)
+	def solidLine(way, width=0, material=nil)
 		if width > 0
 			width = width/2
 			point1 = nil
@@ -32,30 +32,30 @@ module OsmImport
 		else
 			sketchupLine(way)
 		end
-    end
-    
-    def sketchupLine(way)
-        point1 = nil
-        way.nodes.each do |node|
-            node = $db.get_node(node)
-            point2 = Sketchup.active_model.latlong_to_point [Float(node.lon), Float(node.lat)]
-            if !point1.nil?
-                line = $entities.add_line point1,point2
-            end
-            point1 = point2
-        end
-    end
+	end
+	
+	def sketchupLine(way)
+		point1 = nil
+		way.nodes.each do |node|
+			node = $db.get_node(node)
+			point2 = Sketchup.active_model.latlong_to_point [Float(node.lon), Float(node.lat)]
+			if !point1.nil?
+				line = $entities.add_line point1,point2
+			end
+			point1 = point2
+		end
+	end
 
-    def face(way, material=nil)
+	def face(way, material=nil)
 		vertices = []
-        way.nodes.each do |node|
-            node = $db.get_node(node)
-            point = Sketchup.active_model.latlong_to_point [Float(node.lon), Float(node.lat)]
-            if !point.nil?
-                vertices << point
-            end
-        end
-        face = $entities.add_face vertices
+		way.nodes.each do |node|
+			node = $db.get_node(node)
+			point = Sketchup.active_model.latlong_to_point [Float(node.lon), Float(node.lat)]
+			if !point.nil?
+				vertices << point
+			end
+		end
+		face = $entities.add_face vertices
 		if !face.nil?
 			# hide face edges
 			for edge in face.edges

@@ -6,7 +6,7 @@ end
 
 
 ways do
-    if highway=="primary"
+	if highway=="primary"
 		OsmImport.solidLine(self, 12.m, 0x9a98ec)
 	elsif highway=="secondary"
 		OsmImport.solidLine(self, 8.m, 0xa5d7fe)
@@ -28,6 +28,6 @@ ways do
 		end
 	elsif natural=="water"
 		OsmImport.face(self, 0xe0d3a9)
-    end
+	end
 end
 
