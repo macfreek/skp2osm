@@ -28,6 +28,12 @@ ways do
 		end
 	elsif natural=="water"
 		OsmImport.face(self, 0xe0d3a9)
+	elsif landuse=="grass"
+		OsmImport.face(self, 0x8ebe98)
+	elsif landuse=="forest"
+		OsmImport.face(self, 0x3f694d)
+	elsif leisure
+		OsmImport.face(self, 0xffffff)
 	end
 end
 
